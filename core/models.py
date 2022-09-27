@@ -53,8 +53,16 @@ class Education(Base):
         return self.titulo
 
 
-class Experience(Education):
+class Experience(Base):
+    titulo = models.CharField('Título', max_length=100)
+    subtitulo = models.CharField('Subtítulo', max_length=100)
+    inicio = models.IntegerField('Ano início', validators=[MinValueValidator(1900), MaxValueValidator(3000)])
+    fim = models.IntegerField('Ano fim', validators=[MinValueValidator(1900), MaxValueValidator(3000)])
+    descricao = models.TextField('Descrição', max_length=200)
 
     class Meta:
         verbose_name = 'Experiência'
         verbose_name_plural = 'Experiências'
+
+    def __str__(self):
+        return self.titulo
