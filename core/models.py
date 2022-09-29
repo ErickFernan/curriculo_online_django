@@ -108,3 +108,27 @@ class Sobre(Base):
 
     def __str__(self):
         return self.titulo
+
+
+class Competencia(Base):
+    competencia = models.CharField('Competência', max_length=40)
+
+    class Meta:
+        verbose_name = 'Competência'
+        verbose_name_plural = 'Competências'
+
+    def __str__(self):
+        return self.competencia
+
+
+class HeaderPicture(Base):
+    foto = StdImageField('Imagem', upload_to=get_file_path,
+                         variations={'thumb': {'width': 600, 'height': 600, 'crop': True}})
+
+    class Meta:
+        verbose_name = 'Foto Header'
+        verbose_name_plural = 'Fotos Header'
+
+    def __str__(self):
+        return f'{self.foto}'
+
