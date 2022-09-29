@@ -1,6 +1,13 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from stdimage.models import StdImageField
+from stdimage import StdImageField
+import uuid
+
+
+def get_file_path(_instance, filename):
+    ext = filename.split('.')[-1]
+    filename = f'{uuid.uuid4()}.{ext}'
+    return filename
 
 
 class Base(models.Model):
@@ -63,6 +70,41 @@ class Experience(Base):
     class Meta:
         verbose_name = 'Experiência'
         verbose_name_plural = 'Experiências'
+
+    def __str__(self):
+        return self.titulo
+
+
+class Endereco(Base):
+    pais = models.CharField('País', max_length=15)
+    estado = models.CharField('Estado', max_length=15)
+    cidade = models.CharField('Cidade', max_length=20)
+
+    class Meta:
+        verbose_name = 'Endereço'
+        verbose_name_plural = 'Endereço'
+
+    def __str__(self):
+        return self.cidade
+
+
+class Sobre(Base):
+    titulo = models.CharField('Título', max_length=100)
+    descricao = models.TextField('Descrição', max_length=200)
+    nome = models.CharField('Nome', max_length=40)
+    escolaridade = models.TextField('Escolariade', max_length=45)
+    telefone = models.CharField('Telefone', max_length=20)
+    endereco = models.ForeignKey('core.Endereco', verbose_name='Endereço', on_delete=models.CASCADE)
+    nascimento = models.DateField('Nascimento')
+    # experia_anos = models.CharField('Experiência', max_length=10)
+    email = models.EmailField(max_length=254)
+    # freelance = models.CharField('Freelance', max_length=15)
+    imagem = StdImageField('Imagem', upload_to=get_file_path,
+                           variations={'thumb': {'width': 600, 'height': 600, 'crop': True}})
+
+    class Meta:
+        verbose_name = 'Sobre'
+        verbose_name_plural = 'Sobre'
 
     def __str__(self):
         return self.titulo
