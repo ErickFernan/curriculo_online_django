@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Education, Experience, Sobre, Endereco, Competencia, HeaderPicture
+from .models import Service, Education, Experience, Sobre, Endereco, Competencia, HeaderPicture, Skill
 
 
 @admin.register(Service)
@@ -35,3 +35,9 @@ class CompetenciaAdmin(admin.ModelAdmin):
 @admin.register(HeaderPicture)
 class HeaderAdmin(admin.ModelAdmin):
     list_display = ('foto', 'ativo', 'modificado')
+
+
+@admin.register(Skill)
+class SkillAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'porcentagem', 'ativo', 'modificado')
+

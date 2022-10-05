@@ -132,3 +132,25 @@ class HeaderPicture(Base):
     def __str__(self):
         return f'{self.foto}'
 
+
+class Skill(Base):
+    BAR_CHOICES = (
+        ('progress-bar bg-primary', 'Verde'),
+        ('progress-bar bg-warning', 'Amarelo'),
+        ('progress-bar bg-danger', 'Vermelho'),
+        ('progress-bar bg-dark', 'Preto'),
+        ('progress-bar bg-info', 'Azul'),
+    )
+
+    nome = models.CharField('Nome', max_length=50)
+    porcentagem = models.IntegerField('Porcentagem', validators=[MinValueValidator(0), MaxValueValidator(100)])
+    cor = models.CharField('Cor', max_length=100, choices=BAR_CHOICES)
+    
+    class Meta:
+        verbose_name = 'Habilidade'
+        verbose_name_plural = 'Habilidades'
+
+    def __str__(self):
+        return f'{self.nome}'
+
+    
