@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from .models import Service, Experience, Education, Sobre, HeaderPicture, Competencia, Skill
+from .models import Service, Experience, Education, Sobre, HeaderPicture, Competencia, Skill, FiltrosProjetos, Projetos
 
 
 class IndexView(TemplateView):
@@ -14,5 +14,7 @@ class IndexView(TemplateView):
         context['picture'] = HeaderPicture.objects.all()
         context['competencia'] = Competencia.objects.order_by('?').all()
         context['habilidade'] = Skill.objects.order_by('?').all()
+        context['filtros'] = FiltrosProjetos.objects.order_by('?').all()
+        context['projetos'] = Projetos.objects.order_by('?').all()
 
         return context

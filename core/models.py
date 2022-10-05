@@ -153,4 +153,28 @@ class Skill(Base):
     def __str__(self):
         return f'{self.nome}'
 
-    
+
+class FiltrosProjetos(Base):
+    nome = models.CharField('Nome_filtro', max_length=30)
+
+    class Meta:
+        verbose_name = 'FiltroProjeto'
+        verbose_name_plural = 'FiltrosProjeto'
+
+    def __str__(self):
+        return f'{self.nome}'
+
+
+class Projetos(Base):
+    nome = models.CharField('Nome', max_length=50)
+    tag = models.ForeignKey('core.FiltrosProjetos', verbose_name='Tags', on_delete=models.CASCADE)
+    imagem = StdImageField('Imagem', upload_to=get_file_path,
+                           variations={'thumb': {'width': 400, 'height': 300, 'crop': True}})
+    link = models.CharField('Link', max_length=200)
+
+    class Meta:
+        verbose_name = 'Projeto'
+        verbose_name_plural = 'Projetos'
+
+    def __str__(self):
+        return f'{self.nome}'
