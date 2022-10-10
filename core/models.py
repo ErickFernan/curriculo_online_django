@@ -167,7 +167,7 @@ class FiltrosProjetos(Base):
 
 class Projetos(Base):
     nome = models.CharField('Nome', max_length=50)
-    tag = models.ForeignKey('core.FiltrosProjetos', verbose_name='Tags', on_delete=models.CASCADE)
+    tag = models.ManyToManyField(FiltrosProjetos)
     imagem = StdImageField('Imagem', upload_to=get_file_path,
                            variations={'thumb': {'width': 400, 'height': 300, 'crop': True}})
     link = models.CharField('Link', max_length=200)
