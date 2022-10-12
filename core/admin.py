@@ -3,6 +3,11 @@ from .models import Service, Education, Experience, Sobre, Endereco, Competencia
                     FiltrosProjetos, Projetos
 
 
+admin.site.site_header = 'Administração de dados'
+admin.site.site_title = 'Administração Currículo'
+admin.site.index_title = 'Faça suas alterações aqui'
+
+
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ('servico', 'icone', 'ativo', 'modificado')
