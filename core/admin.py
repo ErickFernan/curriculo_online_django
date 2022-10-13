@@ -68,4 +68,3 @@ class FiltrosProjetosAdmin(TranslationAdmin):
 class ProjetosAdmin(admin.ModelAdmin):
     model = Projetos
     list_display = ('nome', 'ativo', 'modificado')
-
