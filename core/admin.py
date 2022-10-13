@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import Service, Education, Experience, Sobre, Endereco, Competencia, HeaderPicture, Skill,\
                     FiltrosProjetos, Projetos
 
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+
 
 admin.site.site_header = 'Administração de dados'
 admin.site.site_title = 'Administração Currículo'
@@ -13,9 +15,9 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ('servico', 'icone', 'ativo', 'modificado')
 
 
-@admin.register(Education)
-class EducationAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'subtitulo', 'ativo', 'modificado')
+# @admin.register(Education)
+# class EducationAdmin(admin.ModelAdmin):
+#     list_display = ('titulo', 'subtitulo', 'ativo', 'modificado')
 
 
 @admin.register(Experience)
@@ -57,3 +59,7 @@ class SkillAdmin(admin.ModelAdmin):
 class SkillAdmin(admin.ModelAdmin):
     list_display = ('nome', 'ativo', 'modificado')
 
+
+@admin.register(Education)
+class EducationAdmin(TranslationAdmin):
+    model = Education
