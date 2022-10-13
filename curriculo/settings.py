@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',  # Ajuda a automatizar a detecção de linguagem através do navegador
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -144,3 +145,10 @@ EMAIL_USE_TSL = True
 EMAIL_HOST_PASSWORD = 'senha123'
 DEFAULT_FROM_EMAIL = 'contato@curriculo.com.br'
 """
+
+LOGOUT_REDIRECT_URL = 'index'
+
+# Configuração para tradução
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
