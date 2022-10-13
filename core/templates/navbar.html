@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
         <a href="{% url 'index' %}" class="navbar-brand ml-lg-3">
@@ -9,15 +10,15 @@
         </button>
         <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
             <div class="navbar-nav m-auto py-0">
-                <a href="#home" class="nav-item nav-link active">Início</a>
-                <a href="#about" class="nav-item nav-link">Sobre</a>
-                <a href="#qualification" class="nav-item nav-link">Qualificações</a>
-                <a href="#skill" class="nav-item nav-link">Habilidades</a>
-                <a href="#service" class="nav-item nav-link">Serviços</a>
-                <a href="#portfolio" class="nav-item nav-link">Projetos</a>
+                <a href="#home" class="nav-item nav-link active">{% trans 'Início' %}</a>
+                <a href="#about" class="nav-item nav-link">{% trans 'Sobre' %}</a>
+                <a href="#qualification" class="nav-item nav-link">{% trans 'Qualificações' %}</a>
+                <a href="#skill" class="nav-item nav-link">{% trans 'Habilidades' %}</a>
+                <a href="#service" class="nav-item nav-link">{% trans 'Serviços' %}</a>
+                <a href="#portfolio" class="nav-item nav-link">{% trans 'Projetos' %}</a>
                 <!--<a href="#testimonial" class="nav-item nav-link">Opiniões de clientes</a>-->
                 <!--<a href="#blog" class="nav-item nav-link">Blog</a>-->
-                <a href="#contact" class="nav-item nav-link">Contato</a>
+                <a href="#contact" class="nav-item nav-link">{% trans 'Contato' %}</a>
             </div>
             <!-- <a href="" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a> -->
         </div>

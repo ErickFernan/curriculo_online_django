@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 
 <div class="container-fluid py-5" id="about">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Sobre</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Sobre mim</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{% trans 'Sobre' %}</h1>
+                <h1 class="position-absolute text-uppercase text-primary">{% trans 'Sobre mim' %}</h1>
             </div>
 
             {% for s in sobre %}
@@ -16,17 +17,17 @@
                     <h3 class="mb-4">{{ s.titulo }}</h3>
                     <p>{{ s.descricao }}</p>
                     <div class="row mb-3">
-                        <div class="col-sm-6 py-2"><h6>Nome: <span class="text-secondary">{{ s.nome }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Aniversário: <span class="text-secondary">{{ s.nascimento }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Escolaridade: <span class="text-secondary">{{ s.escolaridade }}</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>{% trans 'Nome' %}: <span class="text-secondary">{{ s.nome }}</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>{% trans 'Aniversário' %}: <span class="text-secondary">{{ s.nascimento }}</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>{% trans 'Escolaridade' %}: <span class="text-secondary">{{ s.escolaridade }}</span></h6></div>
                         <!--<div class="col-sm-6 py-2"><h6>Experiência: <span class="text-secondary">10 Years</span></h6></div>-->
-                        <div class="col-sm-6 py-2"><h6>Telefone: <span class="text-secondary">{{ s.telefone }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">{{ s.email }}</span></h6></div>
-                        <div class="col-sm-6 py-2"><h6>Endereço: <span class="text-secondary">{{ s.endereco.cidade}}, {{ s.endereco.estado}}, {{ s.endereco.pais}}</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>{% trans 'Telefone' %}: <span class="text-secondary">{{ s.telefone }}</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>{% trans 'E-mail' %}: <span class="text-secondary">{{ s.email }}</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>{% trans 'Endereço' %}: <span class="text-secondary">{{ s.endereco.cidade}}, {{ s.endereco.estado}}, {{ s.endereco.pais}}</span></h6></div>
                         <!--<div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>-->
                     </div>
-                    <a href="https://wa.me/553299824460" target="_blank" class="btn btn-outline-primary mr-4">Entre em contato</a>
-                    <a href="https://www.linkedin.com/in/dverickfernan/" target="_blank" class="btn btn-outline-primary">Veja Mais</a>
+                    <a href="https://wa.me/553299824460" target="_blank" class="btn btn-outline-primary mr-4">{% trans 'Entre em contato' %}</a>
+                    <a href="https://www.linkedin.com/in/dverickfernan/" target="_blank" class="btn btn-outline-primary">{% trans 'Veja Mais' %}</a>
                 </div>
             </div>
             {% endfor %}

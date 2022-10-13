@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 
 <div class="container-fluid pt-5" id="service">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Serviços</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Meus Serviços</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{% trans 'Serviços' %}</h1>
+                <h1 class="position-absolute text-uppercase text-primary">{% trans 'Meus Serviços' %}</h1>
             </div>
             <div class="row pb-3">
 
@@ -15,7 +16,7 @@
                         <h4 class="font-weight-bold m-0">{{ s.servico }}</h4>
                     </div>
                     <p>{{ s.descricao }}</p>
-                    <a class="border-bottom border-primary text-decoration-none" href="">Read More</a>
+                    <a class="border-bottom border-primary text-decoration-none" href="">{% trans 'Veja mais' %}</a>
                 </div>
                 {% endfor %}
 

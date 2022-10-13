@@ -1,10 +1,11 @@
 {% load static %}
+{% load i18n %}
 
 <div class="container-fluid py-5" id="contact">
         <div class="container">
             <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Contato</h1>
-                <h1 class="position-absolute text-uppercase text-primary">Contate-me</h1>
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{% trans 'Contato' %}</h1>
+                <h1 class="position-absolute text-uppercase text-primary">{% trans 'Contate-me' %}</h1>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -14,29 +15,29 @@
                             {% csrf_token %}
                             <div class="form-row">
                                 <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" id="nome" name="nome" placeholder="Nome"
+                                    <input type="text" class="form-control p-4" id="nome" name="nome" placeholder="{% trans 'Nome' %}"
                                         required="required" data-validation-required-message="Please enter your name" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                                 <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" name="email" placeholder="E-mail"
+                                    <input type="email" class="form-control p-4" id="email" name="email" placeholder="{% trans 'E-mail' %}"
                                         required="required" data-validation-required-message="Please enter your email" />
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
                             <div class="control-group">
-                                <input type="text" class="form-control p-4" id="assunto" name="assunto" placeholder="Assunto"
+                                <input type="text" class="form-control p-4" id="assunto" name="assunto" placeholder="{% trans 'Assunto' %}"
                                     required="required" data-validation-required-message="Please enter a subject" />
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" id="mesagem" name="mensagem" placeholder="Mensagem"
+                                <textarea class="form-control py-3 px-4" rows="5" id="mesagem" name="mensagem" placeholder="{% trans 'Mensagem' %}"
                                     required="required"
                                     data-validation-required-message="Por favor, digite sua mensagem"></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                             <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">Enviar Mensagem</button>
+                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">{% trans 'Enviar Mensagem' %}</button>
                             </div>
                         </form>
                     </div>
