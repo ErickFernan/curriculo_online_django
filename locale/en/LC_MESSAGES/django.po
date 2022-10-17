@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-13 13:50-0300\n"
-"PO-Revision-Date: 2022-10-13 13:51-0300\n"
+"PO-Revision-Date: 2022-10-17 10:56-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -80,7 +80,7 @@ msgstr "Start Year"
 
 #: core/models.py:55 core/models.py:70
 msgid "Ano fim"
-msgstr "Year end"
+msgstr "End Year"
 
 #: core/models.py:59 core/models.py:60
 msgid "Educação"
