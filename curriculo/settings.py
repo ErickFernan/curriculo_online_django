@@ -162,3 +162,16 @@ LANGUAGES = (
     ('pt-br', 'Português'),
     ('en', 'English'),
 )
+
+# Recursos extras de segurança
+SECURE_HSTS_SECONDS = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_CONTENT_TYPE_NOSNIFE = True
+SECURE_BROWSER_XSS_FILTER = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+X_FRAME_OPTIONS = 'DENY'
+
+# mudar para True na hora de publicar
+SECURE_SSL_REDIRECT = False
