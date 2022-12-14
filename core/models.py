@@ -24,6 +24,7 @@ class Base(models.Model):
 
 class Service(Base):
     ICONE_CHOICES = (
+
         ('fa fa-2x fa-laptop service-icon bg-primary text-white mr-3', 'Laptop'),
         ('fa fa-2x fa-laptop-code service-icon bg-primary text-white mr-3', 'Laptop-code'),
         ('fab fa-2x fa-android service-icon bg-primary text-white mr-3', 'Android'),
@@ -31,7 +32,8 @@ class Service(Base):
         ('fa fa-2x fa-search service-icon bg-primary text-white mr-3', 'Search'),
         ('fa fa-2x fa-edit service-icon bg-primary text-white mr-3', 'Edit'),
         ('fa fa-2x fa-solid fa-robot service-icon bg-primary text-white mr-3', 'Robot'),
-        ('fa fa-2x fa-solid fa-bolt service-icon bg-primary text-white mr-3', 'lightning'),
+        ('fa fa-2x fa-solid fa-bolt service-icon bg-primary text-white mr-3', 'Lightning'),
+        ('fa fa-2x fa-cog service-icon bg-primary text-white mr-3', 'Gear'),
 
     )
 
@@ -68,7 +70,7 @@ class Experience(Base):
     subtitulo = models.CharField(_('Subtítulo'), max_length=100)
     inicio = models.IntegerField(_('Ano início'), validators=[MinValueValidator(1900), MaxValueValidator(3000)])
     fim = models.IntegerField(_('Ano fim'), validators=[MinValueValidator(1900), MaxValueValidator(3000)])
-    descricao = models.TextField(_('Descrição'), max_length=200)
+    descricao = models.TextField(_('Descrição'), max_length=300)
 
     class Meta:
         verbose_name = _('Experiência')
@@ -93,7 +95,7 @@ class Endereco(Base):
 
 class Sobre(Base):
     titulo = models.CharField(_('Título'), max_length=100)
-    descricao = models.TextField(_('Descrição'), max_length=200)
+    descricao = models.TextField(_('Descrição'), max_length=400)
     nome = models.CharField(_('Nome'), max_length=40)
     escolaridade = models.TextField(_('Escolariade'), max_length=45)
     telefone = models.CharField(_('Telefone'), max_length=20)
