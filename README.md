@@ -1,3 +1,5 @@
+# Projeto portfólio|currículo web.
+
 Uma das recomendações mais recorrentes para as pessoas que querem ingressar no mercado de TI, é a criação de um portfólio com seus principais dados de 
 perfil, contato e projetos. Tendo isso em mente, quando iniciei o curso de Django decidi que ao final dele utilizaria dos conhecimentos adquiridos para 
 fazer o meu, o que resultou nesse projeto que será aqui descrito.
@@ -20,3 +22,29 @@ paginas de erros 404 e 500.
 Para as views do projeto foi utilizado Class Based Views(CBV), diferentemente de projetos antigos em que utilizei Function Based Views(FBV), a CBV para 
 este projeto possui tudo o que era necessário por padrão (FormView), o que facilitou tanto a parte organizacional quanto a carga de trabalho necessário 
 para seu funcionamento.
+
+# Models
+
+Para os models foi criado um grupo base utilizado em todos os modelos contendo as informações:
+1. Criado: Data de criação, campo do tipo Datefield.
+2. Modificado: Data de modificação, campo do tipo Datefield.
+3. Ativo: Situação do dado (ativo ou não), campo do tipo BooleanField.
+
+Para a parte de imagens foi utilizado a função stdimage, sendo seus nomes rescritos utilizando a biblioteca uuid no intuito de evitar conflito entre os nomes na hora de fazer o upload e, consequentemente, a perca de informação (o django possui por padrão a função de reescrita, entretanto ela mantêm parte do nome original, sendo assim preferi usar uma biblioteca hexadecimal para existir apenas caracteres sem a formação de palavras).
+
+# Tradução
+
+Para que o site possua a função de tradução foi lançado mão de duas ferramentas, uma para a parte Html (gettext) disponível pelo próprio django e outra para os textos no banco de dados (django-modeltranslation) que é necessário efetuar a instalação por fora. Para a parte Html é gerado um arquivo de lista onde você escreve a tradução para cada palavra, algumas ferramentas como o poedit podem ser utilizadas para simplificar o trabalho. Já para os textos do banco de dados, foi preciso escrever para quais linguas a tradução seria feita e após configurado é possível digitar as traduções no momento que se cadastra algo no banco de dados. Com as traduções configuradas, o texto apresentado na página será referente ao idioma utilizado pelo navegador.
+OBS.: ainda não possuo um inglês fluente, dessa forma se encontrar alguma tradução estranha a culpa é do Google tradutor!
+
+# Testes
+
+Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca NOME e é possível ver o PDF de resumo clicando AQUI ou executando a função NOME DA FUNÇÂO via terminal através do projeto no python, ou via Docker.
+
+# Demonstração
+
+Caso queira ver mais sobre o projeto você pode:
+1. Assistir a esse vídeo onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
+2. Fazer o download deste arquivo docker para instalar e já testar em sua própria maquina. Acesse esse link para conferir o passo a passo de download e execução no docker.
+3. Baixar pelo Github e se divertir modificando-o.
+
