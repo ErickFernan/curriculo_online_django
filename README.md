@@ -2,11 +2,13 @@
 
 Uma das recomendações mais recorrentes para as pessoas que querem ingressar no mercado de TI, é a criação de um portfólio com seus principais dados de 
 perfil, contato e projetos. Tendo isso em mente, quando iniciei o curso de Django decidi que ao final dele utilizaria dos conhecimentos adquiridos para 
-fazer o meu, o que resultou nesse projeto que será aqui descrito.
+fazer o meu, o que resultou neste projeto que será aqui descrito.
 
 O projeto é baseado em Django e utiliza o banco de dados PostgreSQL para armazenamento, o site foi publicado através da plataforma 
 [Heroku](https://dashboard.heroku.com/login) que possui um plano grátis sem a necessidade de cadastro de um cartão de 
 crédito (logicamente com algumas limitações de uso). 
+
+[clique aqui para acessa-lo](www.google.com)
 
 # Front-end
 
@@ -39,7 +41,7 @@ OBS.: ainda não possuo um inglês fluente, dessa forma se encontrar alguma trad
 
 # Testes
 
-Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca NOME e é possível ver o PDF de resumo clicando AQUI ou executando a função NOME DA FUNÇÂO via terminal através do projeto no python, ou via Docker.
+Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca coverage e é possível ver o PDF de resumo clicando AQUI ou executando a função (coverage run manage.py test -> para rodar os testes, coverage report -> para ver um resumo no próprio terminal, coverage html -> para criar uma pagina html contendo detalhes sobre os testes) via terminal através do projeto no python, ou via Docker.
 
 # Demonstração
 
