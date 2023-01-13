@@ -18,6 +18,7 @@ class ServiceTestCase(TestCase):
     def setUp(self):
         self.servico = mommy.make('Service')
 
+
     def test_str(self):
         self.assertEquals(str(self.servico), self.servico.servico)
 
