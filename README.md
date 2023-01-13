@@ -12,12 +12,12 @@ fazer o meu, o que resultou neste projeto que será aqui descrito.
 
 <p align="justify"> 
 O projeto é baseado em Django e utiliza o banco de dados PostgreSQL para armazenamento, o site foi publicado através da plataforma 
-[Heroku](https://dashboard.heroku.com/login) que possui um plano grátis sem a necessidade de cadastro de um cartão de 
+<a href="https://dashboard.heroku.com/login"> HEROKU </a> que possui um plano grátis sem a necessidade de cadastro de um cartão de 
 crédito (logicamente com algumas limitações de uso). 
 </p>
 
 
-[clique aqui para acessa-lo](www.google.com)
+[CLIQUE AQUI PARA CONFERIR O SITE](www.google.com)
 
 ## Front-end
 
@@ -61,7 +61,7 @@ OBS.: ainda não possuo um inglês fluente, dessa forma se encontrar alguma trad
 ## Testes
 
 <p align="justify"> 
-Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca coverage e é possível ver o PDF de resumo clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/main/tests.pdf" target="_blank"> AQUI </a> ou executando os comandos abaixo via terminal através do projeto no python, ou via Docker.
+Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca coverage e é possível ver o PDF de resumo clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/main/tests.pdf"> AQUI </a> ou executando os comandos abaixo via terminal através do projeto no python, ou via Docker.
 </p>
 
 1. <em>coverage run manage.py test</em> -> para rodar os testes 
