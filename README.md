@@ -64,9 +64,9 @@ OBS.: ainda não possuo um inglês fluente, dessa forma se encontrar alguma trad
 Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca <em> coverage </em> e é possível ver o PDF de resumo clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/main/tests.pdf"> AQUI </a> ou executando os comandos abaixo via terminal através do projeto no <em> python </em>, ou via <em> Docker </em>.
 </p>
 
-1. <em>coverage run manage.py test</em> -> para rodar os testes 
-2. <em> coverage report</em> -> para ver um resumo no próprio terminal, 
-3. <em>coverage html</em> -> para criar uma pagina html contendo detalhes sobre os testes 
+1. <em>coverage run manage.py test</em> -> para rodar os testes.
+2. <em> coverage report</em> -> para ver um resumo no próprio terminal.
+3. <em>coverage html</em> -> para criar uma pagina html contendo detalhes sobre os testes.
 
 ## Demonstração
 
@@ -76,8 +76,11 @@ Caso queira ver mais sobre o projeto você pode:
 3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar o requisitos que se encontram no arquivo 
 <em> requirements.txt </em>.
 
+## Contato
+
 Para sugestões ou dúvidas entre em contado por:
-E-mail: dverickfernan@gmail.com
-Whatsapp: <a href=" https://wa.me/5532999824460 "> 32 999824460 </a>
-Linkedin: <a href="https://www.linkedin.com/in/dverickfernan/"> in/dverickfernan </a>
+
+1. E-mail: dverickfernan@gmail.com
+2. Whatsapp: <a href="https://wa.me/5532999824460"> 32 999824460 </a>
+3. Linkedin: <a href="https://www.linkedin.com/in/dverickfernan/"> in/dverickfernan </a>
 
