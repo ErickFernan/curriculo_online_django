@@ -72,7 +72,7 @@ Este projeto está com todos os testes escritos e funcionando, para criar os tes
 
 Caso queira ver mais sobre o projeto você pode:
 1. Assistir a esse vídeo onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
-2. Fazer o <em> download </em> deste arquivo docker para instalar e já testar em sua própria maquina. Acesse esse link para conferir o passo a passo de download e execução no <em> docker </em>.
+2. Fazer o <em> download </em> deste arquivo docker para instalar e já testar em sua própria maquina. Acesse esse link para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>.
 3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar o requisitos que se encontram no arquivo 
 <em> requirements.txt </em>.
 
