@@ -12,8 +12,7 @@ fazer o meu, o que resultou neste projeto que será aqui descrito.
 
 <p align="justify"> 
 O projeto é baseado em <em> Django </em> e utiliza o banco de dados <em> PostgreSQL </em> para armazenamento, o site foi publicado através da plataforma 
-<a href="https://dashboard.heroku.com/login"> HEROKU </a> que possui um plano grátis sem a necessidade de cadastro de um cartão de 
-crédito (logicamente com algumas limitações de uso). 
+<a href="https://dashboard.heroku.com/login"> HEROKU </a> que possui um plano grátis (logicamente com algumas limitações de uso). 
 </p>
 
 
