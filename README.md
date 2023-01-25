@@ -15,6 +15,10 @@ O projeto é baseado em <em> Django </em> e utiliza o banco de dados <em> Postgr
 <a href="https://dashboard.heroku.com/login"> HEROKU </a> que possui um plano grátis (logicamente com algumas limitações de uso). 
 </p>
 
+<p align="center">
+ <img src="https://github.com/ErickFernan/curriculo_online_django/blob/main/media/simplescreenrecorder-2023-01-25_15.07.50.gif?raw=true"/>
+</p>
+
 
 [CLIQUE AQUI PARA CONFERIR O SITE](www.google.com)
 
