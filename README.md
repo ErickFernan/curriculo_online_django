@@ -13,10 +13,16 @@ fazer o meu, o que resultou neste projeto que será aqui descrito.
 <p align="justify"> 
 O projeto é baseado em <em> Django </em> e utiliza o banco de dados <em> PostgreSQL </em> para armazenamento, o site foi publicado através da plataforma 
 <a href="https://dashboard.heroku.com/login"> HEROKU </a> que possui um plano grátis (logicamente com algumas limitações de uso). 
+ 
+</p>
+
+<p align="center">
+ <img src="https://github.com/ErickFernan/curriculo_online_django/blob/main/media/simplescreenrecorder-2023-01-25_15.07.50.gif?raw=true"/>
 </p>
 
 
-[CLIQUE AQUI PARA CONFERIR O SITE](www.google.com)
+[CLIQUE AQUI PARA CONFERIR O SITE](#)
+ Obs.: A Heroku não possui mais o plano gratuito, então por enquanto o site não está disponível.
 
 ## Front-end
 
@@ -71,7 +77,7 @@ Este projeto está com todos os testes escritos e funcionando, para criar os tes
 
 Caso queira ver mais sobre o projeto você pode:
 1. Assistir a esse vídeo onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
-2. Fazer o <em> download </em> deste arquivo .zip e instalar utilizando o docker para já testar em sua própria máquina. Acesse esse [LINK](https://gist.github.com/ErickFernan/e8d9e72500b7f75b77db9e9fb931e5fa) para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>. Obs.: Você pode também assitir esse [Vídeo](#) para ver o passo a passo.
+2. Fazer o <em> download </em> deste arquivo .zip e instalar utilizando o docker para já testar em sua própria máquina. Acesse esse [LINK](https://gist.github.com/ErickFernan/e8d9e72500b7f75b77db9e9fb931e5fa) para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>. Obs.: Você pode também assitir esse [Vídeo](https://youtu.be/HGx5Y0h-Lkg) para ver o passo a passo.
 3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar o requisitos que se encontram no arquivo 
 <em> requirements.txt </em>.
 
