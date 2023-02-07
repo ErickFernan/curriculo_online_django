@@ -77,7 +77,9 @@ Este projeto está com todos os testes escritos e funcionando, para criar os tes
 
 Caso queira ver mais sobre o projeto você pode:
 1. Assistir a esse vídeo onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
-2. Fazer o <em> download </em> deste arquivo .zip e instalar utilizando o docker para já testar em sua própria máquina. Acesse esse [LINK](https://gist.github.com/ErickFernan/e8d9e72500b7f75b77db9e9fb931e5fa) para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>. Obs.: Você pode também assitir esse [Vídeo](https://youtu.be/HGx5Y0h-Lkg) para ver o passo a passo.
+2. Fazer o <em> download </em> deste arquivo .zip e instalar utilizando o docker para já testar em sua própria máquina. Acesse esse [LINK](https://gist.github.com/ErickFernan/e8d9e72500b7f75b77db9e9fb931e5fa) para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>. 
+    * Obs1.: Você pode também assitir esse [Vídeo](https://youtu.be/HGx5Y0h-Lkg) para ver o passo a passo.
+    * Obs2.: Por não estar publicado vou deixar uma opção do site estático [AQUI](#), assim além de testar é possível vê-lo preenchido.
 3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar o requisitos que se encontram no arquivo 
 <em> requirements.txt </em>.
 
