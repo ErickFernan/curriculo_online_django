@@ -33,7 +33,7 @@ class IndexView(FormView):
 
     def form_valid(self, form, *args, **kwargs):
         form.send_mail()
-        messages.success(self.request, _('E-mail enviado com sucesso!!!'))
+        messages.success(self.request, _('E-mail enviado com sucesso!'))
         return super(IndexView, self).form_valid(form, *args, **kwargs)
 
     def form_invalid(self, form, *args, **kwargs):
