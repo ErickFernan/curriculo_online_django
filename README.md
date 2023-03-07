@@ -17,7 +17,7 @@ O projeto é baseado em <em> Django </em> e utiliza o banco de dados <em> Postgr
 </p>
 
 <p align="center">
- <img src="https://github.com/ErickFernan/curriculo_online_django/blob/main/media/simplescreenrecorder-2023-01-25_15.07.50.gif?raw=true"/>
+ <img src="https://github.com/ErickFernan/curriculo_online_django/blob/master/media/simplescreenrecorder-2023-01-25_15.07.50.gif?raw=true"/>
 </p>
 
 
@@ -66,7 +66,7 @@ OBS.: ainda não possuo um inglês fluente, dessa forma se encontrar alguma trad
 ## Testes
 
 <p align="justify"> 
-Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca <em> coverage </em> e é possível ver o PDF de resumo clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/main/tests.pdf"> AQUI </a> ou executando os comandos abaixo via terminal através do projeto no <em> python </em>, ou via <em> Docker </em>.
+Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca <em> coverage </em> e é possível ver o PDF de resumo clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/master/tests.pdf"> AQUI </a> ou executando os comandos abaixo via terminal através do projeto no <em> python </em>, ou via <em> Docker </em>.
 </p>
 
 1. <em>coverage run manage.py test</em> -> para rodar os testes.
@@ -76,11 +76,11 @@ Este projeto está com todos os testes escritos e funcionando, para criar os tes
 ## Demonstração
 
 Caso queira ver mais sobre o projeto você pode:
-1. Assistir a esse vídeo onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
+1. [Assistir a esse vídeo](https://youtu.be/xNfOM4lk_LE) onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
 2. Fazer o <em> download </em> deste arquivo .zip e instalar utilizando o docker para já testar em sua própria máquina. Acesse esse [LINK](https://gist.github.com/ErickFernan/e8d9e72500b7f75b77db9e9fb931e5fa) para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>. 
     * Obs1.: Você pode também assitir esse [Vídeo](https://youtu.be/HGx5Y0h-Lkg) para ver o passo a passo.
     * Obs2.: Por não estar publicado vou deixar uma opção do site estático [AQUI](https://drive.google.com/file/d/1UmbFT4PhlcD1S8TR7ZHQU_LHqr3YmQB3/view?usp=share_link), assim além de testar é possível vê-lo preenchido.
-3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar o requisitos que se encontram no arquivo 
+3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar os requisitos que se encontram no arquivo 
 <em> requirements.txt </em>.
 
 ## Contato
