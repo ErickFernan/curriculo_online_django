@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  pgcurriculo:
+    build:
+      dockerfile: ./docker/pgcurriculo.dockerfile
+      context: .
+    container_name: pgcurriculo
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    env_file: .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    restart: unless-stopped 
+  
+  curriculo:
+    build:
+      dockerfile: ./docker/curriculo.dockerfile
+      context: .
+    image: erickfern/curriculo:v1
+    container_name: curriculo
+    command: sh -c "
+      python manage.py migrate &&
+      python create_admin_user.py &&
+      python manage.py runserver 0.0.0.0:8000"
+    env_file: .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pgcurriculo
+    restart: unless-stopped
+
+  # cloudflared-tunnel:
+  #   image: cloudflare/cloudflared:latest
+  #   container_name: cloudflared-tunnel
+  #   restart: unless-stopped
+  #   volumes:
+  #     # Monta o diretório de credenciais dentro do container
+  #     - ./.cloudflared:/home/nonroot/.cloudflared
+  #   command: tunnel --no-autoupdate run curriculo-prod
+
+volumes:
+  pgdata:

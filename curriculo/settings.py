@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 
+from decouple import config
+
 import django.core.mail.backends.base
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,10 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+46h&ua&&98wlj1jjs3ynjflyl+nc(*f%($9y9y@j8tu__%%a)'
+SECRET_KEY = config('DJANGO_SECRET_KEY')
+ADMIN_PATH = config('ADMIN_PATH') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = ['*']
 
 
@@ -82,11 +85,11 @@ WSGI_APPLICATION = 'curriculo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'curriculo_db',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('POSTGRES_PASSWORD'),
+        'HOST': 'pgcurriculo',  # nome do serviço no docker-compose
+        'PORT': config('POSTGRES_PORT', default='5432'),
     }
 }
 
