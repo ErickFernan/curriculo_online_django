@@ -95,9 +95,9 @@ class Endereco(Base):
 
 class Sobre(Base):
     titulo = models.CharField(_('Título'), max_length=100)
-    descricao = models.TextField(_('Descrição'), max_length=400)
+    descricao = models.TextField(_('Descrição'), max_length=500)
     nome = models.CharField(_('Nome'), max_length=40)
-    escolaridade = models.TextField(_('Escolariade'), max_length=45)
+    escolaridade = models.TextField(_('Escolariade'), max_length=150)
     telefone = models.CharField(_('Telefone'), max_length=20)
     endereco = models.ForeignKey('core.Endereco', verbose_name=_('Endereço'), on_delete=models.CASCADE)
     nascimento = models.DateField(_('Nascimento'))
