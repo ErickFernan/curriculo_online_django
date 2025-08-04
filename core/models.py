@@ -54,8 +54,8 @@ class Education(Base):
     titulo = models.CharField(_('Título'), max_length=100)
     subtitulo = models.CharField(_('Subtítulo'), max_length=100)
     inicio = models.IntegerField(_('Ano início'), validators=[MinValueValidator(1900), MaxValueValidator(3000)])
-    fim = models.IntegerField(_('Ano fim'),  validators=[MinValueValidator(1900), MaxValueValidator(3000)])
-    descricao = models.TextField(_('Descrição'), max_length=200)
+    fim = models.IntegerField(_('Ano fim'),  validators=[MinValueValidator(1900), MaxValueValidator(3000)], blank=True, null=True)
+    descricao = models.TextField(_('Descrição'), max_length=500)
 
     class Meta:
         verbose_name = _('Educação')
@@ -69,8 +69,8 @@ class Experience(Base):
     titulo = models.CharField(_('Título'), max_length=100)
     subtitulo = models.CharField(_('Subtítulo'), max_length=100)
     inicio = models.IntegerField(_('Ano início'), validators=[MinValueValidator(1900), MaxValueValidator(3000)])
-    fim = models.IntegerField(_('Ano fim'), validators=[MinValueValidator(1900), MaxValueValidator(3000)])
-    descricao = models.TextField(_('Descrição'), max_length=300)
+    fim = models.IntegerField(_('Ano fim'), validators=[MinValueValidator(1900), MaxValueValidator(3000)], blank=True, null=True)
+    descricao = models.TextField(_('Descrição'), max_length=500)
 
     class Meta:
         verbose_name = _('Experiência')
