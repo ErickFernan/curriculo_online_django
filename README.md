@@ -58,7 +58,6 @@ Para a parte de imagens foi utilizado a função <em> stdimage </em>, sendo seus
 
 <p align="justify"> 
 Para que o site possua a função de tradução foi lançado mão de duas ferramentas, uma para a parte Html (<em>gettext</em>) disponível pelo próprio django e outra para os textos no banco de dados (<em>django-modeltranslation</em>) que é necessário efetuar a instalação por fora. Para a parte Html é gerado um arquivo de lista onde você escreve a tradução para cada palavra, algumas ferramentas como o poedit podem ser utilizadas para simplificar o trabalho. Já para os textos do banco de dados, foi preciso escrever para quais linguas a tradução seria feita e após configurado é possível digitar as traduções no momento que se cadastra algo no banco de dados. Com as traduções configuradas, o texto apresentado na página será referente ao idioma utilizado pelo navegador.
-OBS.: ainda não possuo um inglês fluente, dessa forma se encontrar alguma tradução estranha a culpa é do Google tradutor!
 </p>
 
 ## Testes
