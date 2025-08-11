@@ -30,7 +30,8 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 ADMIN_PATH = config('ADMIN_PATH') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+# DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # Ajuda a automatizar a detecção de linguagem através do navegador
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
