@@ -2,32 +2,24 @@ FROM python:3.10.0-alpine
 
 LABEL maintainer="Erick <dverickfernan@gmail.com>"
 
-# Instalar dependências do sistema
-RUN apk update && \
-    apk add --no-cache \
-    gcc \
-    musl-dev \
-    python3-dev \
-    libffi-dev \
-    postgresql-dev \
-    jpeg-dev \
-    zlib-dev \
-    build-base
+RUN mkdir -p /usr/src/app
+# set working directory
+WORKDIR /usr/src/app
 
-# Criar diretório de trabalho
-WORKDIR /var/www
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-# Copiar código para dentro da imagem
-COPY . /var/www
+# install dependencies
+RUN pip install --upgrade pip
+COPY ./requirements.txt /usr/src/app
+RUN pip install -r requirements.txt
 
-# Instalar as dependências Python
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# copy project
+ADD . /usr/src/app
 
 # Coletar arquivos estáticos (caso use)
 RUN python manage.py collectstatic --noinput || true
 
 # Porta padrão do Django
 EXPOSE 8000
-
-# Define o comando padrão (que será sobrescrito pelo docker-compose)
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Service, Education, Experience, Sobre, Endereco, Competencia, HeaderPicture, Skill,\
-                    FiltrosProjetos, Projetos
+                    FiltrosProjetos, Projetos, Curriculo
 
 from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 
@@ -68,3 +68,8 @@ class FiltrosProjetosAdmin(TranslationAdmin):
 class ProjetosAdmin(admin.ModelAdmin):
     model = Projetos
     list_display = ('nome', 'ativo', 'modificado')
+
+@admin.register(Curriculo)
+class CurriculoAdmin(admin.ModelAdmin):
+    model = Curriculo
+    list_display = ('titulo', 'arquivo_pdf', 'ativo', 'modificado')

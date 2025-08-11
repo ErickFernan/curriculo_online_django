@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.utils import translation
 
-from .models import Service, Experience, Education, Sobre, HeaderPicture, Competencia, Skill, FiltrosProjetos, Projetos
+from .models import Service, Experience, Education, Sobre, HeaderPicture, Competencia, Skill, FiltrosProjetos, Projetos, Curriculo
 
 from .forms import ContatoForm
 
@@ -22,6 +22,7 @@ class IndexView(FormView):
         context['experiencia'] = Experience.objects.all()
         context['sobre'] = Sobre.objects.all()
         context['picture'] = HeaderPicture.objects.all()
+        context['pdf'] = Curriculo.objects.all()
         context['competencia'] = Competencia.objects.order_by('?').all()
         context['habilidade'] = Skill.objects.order_by('?').all()
         context['filtros'] = FiltrosProjetos.objects.order_by('?').all()

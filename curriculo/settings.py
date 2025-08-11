@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 
+from dj_database_url import parse as psql_url
+
 from decouple import config
 
 import django.core.mail.backends.base
@@ -82,17 +84,23 @@ WSGI_APPLICATION = 'curriculo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DB'),
-        'USER': config('POSTGRES_USER'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': 'pgcurriculo',  # nome do serviço no docker-compose
-        'PORT': config('POSTGRES_PORT', default='5432'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('POSTGRES_DB'),
+#         'USER': config('POSTGRES_USER'),
+#         'PASSWORD': config('POSTGRES_PASSWORD'),
+#         'HOST': 'pgcurriculo',  # nome do serviço no docker-compose
+#         'PORT': config('POSTGRES_PORT', default='5432'),
+#     }
+# }
 
+DATABASES = {
+    'default': config(
+        'POSTGRES_URL',
+        cast=psql_url
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -1,6 +1,8 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.validators import FileExtensionValidator
+
 
 from stdimage import StdImageField
 
@@ -137,7 +139,17 @@ class HeaderPicture(Base):
     def __str__(self):
         return f'{self.foto}'
 
+class Curriculo(Base):
+    titulo = models.CharField(max_length=200)
+    arquivo_pdf = models.FileField(upload_to=get_file_path,
+                                   validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    class Meta:
+        verbose_name = _('Curriculo')
+        verbose_name_plural = _('Curriculos')
 
+    def __str__(self):
+        return f'{self.arquivo_pdf}'
+    
 class Skill(Base):
     BAR_CHOICES = (
         ('progress-bar bg-primary', _('Verde')),
@@ -183,3 +195,4 @@ class Projetos(Base):
 
     def __str__(self):
         return f'{self.nome}'
+        

@@ -98,7 +98,7 @@ Este é um projeto antigo que está passando por um processo de modernização p
 - [x] **Ocultar URL do Admin**: Alterar o caminho do painel administrativo para uma URL não previsível, visando reduzir a exposição a ataques automatizados.
 
 ### Próximos Passos (Melhorias)
-- [ ] **Storage de Arquivos**: Implementar o MinIO como serviço de storage self-hosted (compatível com API S3) para o upload e armazenamento de imagens.
+- [ ] **Storage de Arquivos**: Implementar o MinIO como serviço de storage self-hosted (compatível com API S3) para o upload e armazenamento de imagens e documentos.
 - [ ] **Revisão de UI/UX**: Analisar e refatorar os campos da aplicação e o design geral para melhorar a experiência do usuário.
 - [ ] **Serviço de E-mail**: Configurar um container de e-mail local para desenvolvimento (ex: MailHog ou Mailtrap) como solução temporária antes de integrar um serviço de produção.
 - [ ] **Gerenciamento de Conteúdo**: Refatorar o template `videomodalstart.html` para permitir que o vídeo seja gerenciado pelo painel administrativo, em vez de estar fixo no código HTML.
