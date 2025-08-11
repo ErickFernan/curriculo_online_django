@@ -22,7 +22,7 @@ services:
     container_name: curriculo_api
     command: >
       sh -c "python manage.py migrate &&
-      python manage.py runserver ${DJANGO_BASE_URL}:${DJANGO_PORT}"
+      gunicorn curriculo.wsgi:application --bind 0.0.0.0:8000 --workers=3"
     ports:
       - "${DJANGO_PORT}:${DJANGO_PORT}"
     depends_on:
@@ -41,6 +41,7 @@ services:
   #     # Monta o diretório de credenciais dentro do container
   #     - ./.cloudflared:/home/nonroot/.cloudflared
   #   command: tunnel --no-autoupdate run curriculo-prod
+  
 
 volumes:
   pgdata:
