@@ -18,8 +18,5 @@ RUN pip install -r requirements.txt
 # copy project
 ADD . /usr/src/app
 
-# Coletar arquivos estáticos (caso use)
-RUN python manage.py collectstatic --noinput || true
-
 # Porta padrão do Django
 EXPOSE 8000

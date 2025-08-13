@@ -15,3 +15,6 @@ htmlcov/*
 venv/*
 
 myenv/*
+
+staticfiles/
+static/
