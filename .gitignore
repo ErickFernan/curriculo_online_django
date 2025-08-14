@@ -17,5 +17,5 @@ venv/*
 
 myenv/*
 
-staticfiles/
-static/
+/staticfiles/
+/static/
