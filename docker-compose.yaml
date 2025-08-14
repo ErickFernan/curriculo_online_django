@@ -8,8 +8,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     container_name: pgcurriculo
-    ports:
-      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    # ports:
+    #   - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
@@ -23,17 +23,37 @@ services:
     command: >
       sh -c "python manage.py migrate &&
       python manage.py collectstatic --noinput &&
-      gunicorn curriculo.wsgi:application --bind 0.0.0.0:8000 --workers=3"
-    ports:
-      - "${DJANGO_PORT}:${DJANGO_PORT}"
+      gunicorn curriculo.wsgi:application --bind 0.0.0.0:${GUNICORN_PORT} --workers=1"
+    # ports:
+    #   - "${DJANGO_PORT}:${DJANGO_PORT}"
     depends_on:
       - pgcurriculo
       - miniocurriculo
     restart: unless-stopped
     env_file:
       - ./.env
+    # Compartilhe os volumes com o Nginx para que ele possa servir os arquivos estáticos
     volumes:
-      - .:/usr/src/app
+      # - .:/usr/src/app # serve para atualizar em tempo real mesmo usando container
+      - staticfiles:/usr/src/app/staticfiles # Volume nomeado para estáticos
+
+  nginx:
+    image: nginx:1.27
+    container_name: nginx
+    # Apenas a porta do Nginx (80) é exposta para o host.
+    # O Cloudflare Tunnel irá se conectar a esta porta.
+    ports:
+      - "${NGINX_PORT}:${NGINX_PORT}"
+    volumes:
+      - ./nginx/default.conf.template:/etc/nginx/templates/default.conf.template
+      # O volume de estáticos é compartilhado com o container do Django
+      - staticfiles:/usr/src/app/staticfiles:ro # 'ro' para somente leitura
+    environment:
+      # Passa a variável de ambiente para dentro do Nginx para que ele saiba o nome do bucket
+      - AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}
+    depends_on:
+      - curriculo_api
+    restart: unless-stopped
 
   # cloudflared-tunnel:
   #   image: cloudflare/cloudflared:latest
@@ -52,7 +72,7 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD} 
     command: server /data --console-address ":9001"
     ports:
-      - "${MINIO_API_PORT}:${MINIO_API_PORT}"
+    #   - "${MINIO_API_PORT}:${MINIO_API_PORT}"
       - "${MINIO_CONSOLE_PORT}:${MINIO_CONSOLE_PORT}"
     volumes:
       - miniocurriculo:/data 
@@ -66,3 +86,4 @@ services:
 volumes:
   pgdata:
   miniocurriculo:
+  staticfiles: # Define o volume nomeado para os arquivos estáticos

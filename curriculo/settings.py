@@ -30,10 +30,9 @@ SECRET_KEY = config('DJANGO_SECRET_KEY')
 ADMIN_PATH = config('ADMIN_PATH') 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG', default=False, cast=bool)
-DEBUG = False
-ALLOWED_HOSTS = ['*']
-
+DEBUG = config('DEBUG', default=False, cast=bool)
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
 
 # Application definition
 
@@ -52,7 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.locale.LocaleMiddleware',  # Ajuda a automatizar a detecção de linguagem através do navegador
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -147,17 +146,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #     BASE_DIR / 'static',
 # ]
 
-# MEDIA_URL = '/media/'
+# MUITO IMPORTANTE: O MEDIA_URL agora será um caminho relativo.
+# O Nginx irá interceptar esse caminho e buscar o conteúdo no MinIO.
+# Ele não contém mais o domínio.
+MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = f"{config('AWS_S3_ENDPOINT_URL')}/{config('AWS_STORAGE_BUCKET_NAME')}/"
+# MEDIA_URL = f"{config('AWS_S3_ENDPOINT_URL')}/{config('AWS_STORAGE_BUCKET_NAME')}/"
 
 STORAGES = {
     # Backend para arquivos de mídia (uploads dos usuários)
     "default": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
     },
-    # # Backend para arquivos estáticos (CSS, JS, etc.)
+    # Em produção, o Nginx servirá os estáticos.
+    # Mas deixar isso aqui não atrapalha e funciona bem em dev.
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
@@ -169,13 +172,18 @@ AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_S3_ENDPOINT_URL = config('AWS_S3_ENDPOINT_URL')  # ex.: "http://minio:9000" no docker ou "http://localhost:9000"
 AWS_S3_REGION_NAME = None  # MinIO não exige região
-AWS_QUERYSTRING_AUTH = True  # True para usar presigned URLs
+AWS_QUERYSTRING_AUTH = False # True para usar presigned URLs # Mude para False. O Nginx agora controla o acesso.
 AWS_QUERYSTRING_EXPIRE = 3600  # tempo em segundos que a URL presigned vai valer
 
-# Constrói o URL base para seus arquivos de mídia. Ex: localhost:9000/django-curriculo
-AWS_S3_ADDRESSING_STYLE = 'path'
-AWS_S3_CUSTOM_DOMAIN = f"{config('MINIO_BASE_URL')}:{config('MINIO_API_PORT')}/{AWS_STORAGE_BUCKET_NAME}"
+# === ADICIONE ESTA LINHA PARA CORRIGIR AS URLS ===
+AWS_S3_CUSTOM_DOMAIN = config('AWS_S3_CUSTOM_DOMAIN')
 AWS_S3_URL_PROTOCOL = 'http:'
+# AWS_S3_URL_PROTOCOL = 'https:' 
+
+# Constrói o URL base para seus arquivos de mídia. Ex: localhost:9000/django-curriculo o Nginx cuidará do domínio.
+# AWS_S3_ADDRESSING_STYLE = 'path'
+# AWS_S3_CUSTOM_DOMAIN = f"{config('MINIO_BASE_URL')}:{config('MINIO_API_PORT')}/{AWS_STORAGE_BUCKET_NAME}"
+# AWS_S3_URL_PROTOCOL = 'http:'
 
 
 # Default primary key field type
@@ -230,14 +238,20 @@ LANGUAGES = (
 )
 
 # Recursos extras de segurança
-SECURE_HSTS_SECONDS = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_CONTENT_TYPE_NOSNIFE = True
-SECURE_BROWSER_XSS_FILTER = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-CSRF_COOKIE_HTTPONLY = True
-X_FRAME_OPTIONS = 'DENY'
 
-# mudar para True na hora de publicar
+# False para evitar potenciais loops de redirecionamento por conta do nginx.
 SECURE_SSL_REDIRECT = False
+
+# Habilita o HSTS (Strict Transport Security) apenas em produção.
+SECURE_HSTS_SECONDS = 0 if DEBUG else 31536000  # 31536000 segundos = 1 ano
+SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG 
+
+# Garante que os cookies de sessão e CSRF só sejam enviados via HTTPS em produção.
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+
+# Estas podem ser mantidas como True em ambos os ambientes.
+SECURE_CONTENT_TYPE_NOSNIFF = True
+CSRF_COOKIE_HTTPONLY = True # Impede acesso ao cookie CSRF via JavaScript
+X_FRAME_OPTIONS = 'DENY'

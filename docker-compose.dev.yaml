@@ -1,0 +1,66 @@
+version: "3.8"
+
+services:
+  pgcurriculo:
+    image: postgres:17.0
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    container_name: pgcurriculo_dev
+    ports:
+      # Expor a porta para conectar com um cliente de BD (DBeaver, etc)
+      - "${POSTGRES_PORT}:5432" 
+    volumes:
+      - pgdata_dev:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+    restart: unless-stopped 
+  
+  curriculo_api:
+    build:
+      dockerfile: ./docker/curriculo.dockerfile
+      context: .
+    container_name: curriculo_api_dev
+    # Use o servidor de desenvolvimento do Django, que tem hot-reload
+    command: >
+      sh -c "python manage.py migrate &&
+      python manage.py collectstatic --noinput &&
+      python manage.py runserver 0.0.0.0:8000"
+    ports:
+      # Exponha a porta do Django diretamente
+      - "${DJANGO_PORT}:8000"
+    depends_on:
+      - pgcurriculo
+      - miniocurriculo
+    restart: unless-stopped
+    env_file:
+      - ./.env.dev # Aponta para o arquivo de ambiente de desenvolvimento
+    volumes:
+      # Monte o código fonte para habilitar o hot-reload
+      - .:/usr/src/app 
+      # Volume de estáticos não é necessário aqui, o runserver cuida disso em modo DEBUG
+
+  # NGINX não é necessário em desenvolvimento. O servidor do Django serve os arquivos.
+  
+  miniocurriculo:
+    image: minio/minio:RELEASE.2024-10-13T13-34-11Z.fips
+    container_name: miniocurriculo_dev
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER} 
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD} 
+    command: server /data --console-address ":9001"
+    ports:
+      # Exponha as portas para acesso local
+      - "${MINIO_API_PORT}:9000"
+      - "${MINIO_CONSOLE_PORT}:9001"
+    volumes:
+      - miniocurriculo_dev:/data 
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  pgdata_dev:
+  miniocurriculo_dev:

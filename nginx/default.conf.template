@@ -1,0 +1,53 @@
+upstream curriculo_api {
+    server curriculo_api:8000;
+}
+
+# Servidor para redirecionar HTTP para HTTPS (opcional, mas recomendado para produção)
+server {
+    listen 80;
+    server_name seu-dominio.com www.seu-dominio.com; # Substitua pelo seu domínio
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 80;  # O Nginx vai escutar na porta 80 dentro do container
+
+    # Configure o server_name para o seu domínio quando for para produção
+    # Para desenvolvimento local, 'localhost' ou '_' é suficiente.
+    server_name localhost;
+
+    # Localização dos arquivos estáticos coletados pelo Django (collectstatic)
+    location /static/ {
+        alias /usr/src/app/staticfiles/;
+        expires 7d;
+        add_header Cache-Control "public";
+    }
+
+    # Localização para os arquivos de mídia (uploads) servidos pelo MinIO
+    # Esta é a parte "mágica" para não expor o MinIO
+    location /media/ {
+        # Reescreve a URL: remove o /media/ e mantém o resto do caminho
+        rewrite ^/media/(.*)$ /${AWS_STORAGE_BUCKET_NAME}/$1 break;
+
+        # Aponta diretamente para o serviço MinIO, sem o nome do bucket aqui
+        proxy_pass http://miniocurriculo:9000;
+
+        # Os headers continuam os mesmos
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+    }
+
+    # Encaminha todas as outras requisições para a aplicação Django
+    location / {
+        proxy_pass http://curriculo_api;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
