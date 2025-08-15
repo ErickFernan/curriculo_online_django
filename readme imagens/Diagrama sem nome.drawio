@@ -1,0 +1,170 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36" version="28.1.0">
+  <diagram name="Página-1" id="HPLfMYvbBJTKpujqASo6">
+    <mxGraphModel dx="1426" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-1" value="Armazenamento de Dados" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="1131" width="532" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-2" value="Aplicação" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="686" width="424" height="374" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-3" value="Infraestrutura Web" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="524" y="440" width="413" height="422" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-4" value="Internet &amp; Borda de Rede" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="588" y="20" width="253" height="349" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-5" value="&#xa;fa:fa-user-circle&#xa; User Browser&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="632" y="45" width="164" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-6" value="&#xa;fa:fa-cloud&#xa; Rede Cloudflare&#xa;(Túnel Seguro)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="623" y="218" width="183" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-7" value="&#xa;fa:fa-server&#xa; Nginx&#xa;(Servidor Web / Proxy Reverso)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="585" y="465" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-8" value="&#xa;fa:fa-file-code&#xa; Static Files&#xa;(CSS, JS, Imagens)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="683" y="711" width="206" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-9" value="&#xa;fa:fa-horse-head&#xa; Gunicorn&#xa;(Servidor WSGI)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="206" y="711" width="183" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-10" value="&#xa;fa:fa-brands fa-python&#xa; Django Application&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="194" y="933" width="205" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-11" value="&#xa;fa:fa-database&#xa; PostgreSQL Database&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="55" y="1168" width="228" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-12" value="&#xa;fa:fa-hdd&#xa; MinIO&#xa;(Object Storage)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="333" y="1156" width="184" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-13" value="Requisição HTTP/HTTPS" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-5" target="fOhxEmDuBNwm7JdyaVef-6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-14" value="Túnel Seguro" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-6" target="fOhxEmDuBNwm7JdyaVef-7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-15" value="Serve diretamente" style="curved=1;startArrow=none;endArrow=block;exitX=0.68;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-7" target="fOhxEmDuBNwm7JdyaVef-8">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="785" y="651" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-16" value="Proxy Reverso" style="curved=1;startArrow=none;endArrow=block;exitX=0.31;exitY=1;entryX=1;entryY=0.32;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-7" target="fOhxEmDuBNwm7JdyaVef-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="644" y="651" />
+              <mxPoint x="644" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-17" value="Protocolo WSGI" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-9" target="fOhxEmDuBNwm7JdyaVef-10">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-18" value="Consultas SQL" style="curved=1;startArrow=block;endArrow=block;exitX=0.08;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-10" target="fOhxEmDuBNwm7JdyaVef-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="169" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-19" value="Leitura/Escrita de Mídia" style="curved=1;startArrow=block;endArrow=block;exitX=0.92;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-10" target="fOhxEmDuBNwm7JdyaVef-12">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="1060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-20" value="Armazenamento de Dados" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="2441" width="532" height="176" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-21" value="Aplicação" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1996" width="424" height="374" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-22" value="Infraestrutura Web" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="524" y="1750" width="413" height="422" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-23" value="Internet &amp; Borda de Rede" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="588" y="1330" width="253" height="349" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-24" value="&#xa;fa:fa-user-circle&#xa; User Browser&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="632" y="1355" width="164" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-25" value="&#xa;fa:fa-cloud&#xa; Rede Cloudflare&#xa;(Túnel Seguro)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="623" y="1528" width="183" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-26" value="&#xa;fa:fa-server&#xa; Nginx&#xa;(Servidor Web / Proxy Reverso)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="585" y="1775" width="260" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-27" value="&#xa;fa:fa-file-code&#xa; Static Files&#xa;(CSS, JS, Imagens)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="683" y="2021" width="206" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-28" value="&#xa;fa:fa-horse-head&#xa; Gunicorn&#xa;(Servidor WSGI)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="206" y="2021" width="183" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-29" value="&#xa;fa:fa-brands fa-python&#xa; Django Application&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="194" y="2243" width="205" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-30" value="&#xa;fa:fa-database&#xa; PostgreSQL Database&#xa;" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="55" y="2478" width="228" height="102" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-31" value="&#xa;fa:fa-hdd&#xa; MinIO&#xa;(Object Storage)" style="whiteSpace=wrap;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="333" y="2466" width="184" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-32" value="Requisição HTTP/HTTPS" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-24" target="fOhxEmDuBNwm7JdyaVef-25">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-33" value="Túnel Seguro" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-25" target="fOhxEmDuBNwm7JdyaVef-26">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-34" value="Serve diretamente" style="curved=1;startArrow=none;endArrow=block;exitX=0.68;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-26" target="fOhxEmDuBNwm7JdyaVef-27">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="785" y="1961" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-35" value="Proxy Reverso" style="curved=1;startArrow=none;endArrow=block;exitX=0.31;exitY=1;entryX=1;entryY=0.32;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-26" target="fOhxEmDuBNwm7JdyaVef-28">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="644" y="1961" />
+              <mxPoint x="644" y="1996" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-36" value="Protocolo WSGI" style="curved=1;startArrow=none;endArrow=block;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-28" target="fOhxEmDuBNwm7JdyaVef-29">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-37" value="Consultas SQL" style="curved=1;startArrow=block;endArrow=block;exitX=0.08;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-29" target="fOhxEmDuBNwm7JdyaVef-30">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="169" y="2370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="fOhxEmDuBNwm7JdyaVef-38" value="Leitura/Escrita de Mídia" style="curved=1;startArrow=block;endArrow=block;exitX=0.92;exitY=1;entryX=0.5;entryY=0;rounded=0;" edge="1" parent="1" source="fOhxEmDuBNwm7JdyaVef-29" target="fOhxEmDuBNwm7JdyaVef-31">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="425" y="2370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
