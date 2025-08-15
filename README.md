@@ -11,12 +11,12 @@ fazer o meu, o que resultou neste projeto que será aqui descrito.
 </p>
 
 <p align="justify"> 
-O projeto é baseado em <em> Django </em> e utiliza o banco de dados <em> PostgreSQL </em> para armazenamento, o site foi publicado através de um servidor local usando o tunnel do cloudflare. 
+O projeto foi desenvolvido com <em>Django</em> e utiliza o banco de dados <em>PostgreSQL</em> para o armazenamento de dados. A arquitetura de produção foi configurada com <em>Nginx</em> atuando como proxy reverso para o servidor de aplicação <em>Gunicorn</em>. O Nginx também é responsável por servir os arquivos estáticos, enquanto o <em>MinIO</em>, um serviço de armazenamento de objetos compatível com a API S3, gerencia os arquivos de mídia (como imagens e documentos), garantindo uma arquitetura robusta e escalável.
  
 </p>
 
 <p align="center">
- <img src="https://github.com/ErickFernan/curriculo_online_django/blob/master/media/simplescreenrecorder-2023-01-25_15.07.50.gif?raw=true"/>
+ <img src="https://github.com/ErickFernan/curriculo_online_django/blob/master/arquitetura.svg"/>
 </p>
 
 
@@ -25,20 +25,13 @@ O projeto é baseado em <em> Django </em> e utiliza o banco de dados <em> Postgr
 ## Front-end
 
 <p align="justify"> 
-Para o projeto foi utilizado um <a href="https://www.free-css.com/free-css-templates/page278/freefolio"> template </a> gratuito disponivel na internet, a partir desse template algumas mudanças foram efetuadas para
-deixa-lo “compatível” com o <em> Django </em>, algumas das principais mudanças foram a separação do modelo em partes distintas (como: <em> header, about, index, … </em>) 
-para reaproveitamento e organização de cada modelo, a parte do <em> Html </em> foi reescrita para que as partes repetitivas sejam criadas a partir das informações 
-disponíveis no banco de dados, assim o site torna-se dinâmico e atualizações no mesmo podem ser feitas diretamente na parte administrativa, sem a 
-necessidade de levar para produção sempre que houver alguma alteração no projeto, além disso reaproveitando a separação de cada tópico foram criadas as 
-paginas de erros 404 e 500.
+Para a interface, utilizei um <a href="https://www.free-css.com/free-css-templates/page278/freefolio">template</a> gratuito que foi adaptado para se integrar ao ecossistema <em>Django</em>. As principais modificações incluíram a componentização do layout em partes reutilizáveis (como <em>header, about, index</em>), otimizando a organização e a manutenção. O código <em>HTML</em> foi reescrito para renderizar dinamicamente o conteúdo a partir do banco de dados, permitindo que atualizações sejam feitas diretamente pelo painel administrativo, sem a necessidade de um novo deploy a cada alteração. Além disso, a estrutura modular foi aproveitada para criar páginas de erro personalizadas (404 e 500).
 </p>
 
 ## Views
 
 <p align="justify"> 
-Para as views do projeto foi utilizado <em> Class Based Views </em>(CBV), diferentemente de projetos antigos em que utilizei <em> Function Based Views </em>(FBV), a CBV para 
-este projeto possui tudo o que era necessário por padrão (FormView), o que facilitou tanto a parte organizacional quanto diminuiu a carga de trabalho necessário 
-para seu funcionamento.
+As views do projeto foram implementadas utilizando <em>Class-Based Views</em> (CBV), uma abordagem que, para este caso de uso, se mostrou mais organizada e eficiente do que as <em>Function-Based Views</em> (FBV). As CBVs nativas do Django, como a <code>FormView</code>, ofereceram todas as funcionalidades necessárias, simplificando o desenvolvimento e reduzindo a quantidade de código escrito.
 </p>
 
 ## Models
@@ -51,24 +44,24 @@ Para os <em> models </em> foi criado um grupo base utilizado em todos os modelos
 3. Ativo: Situação do dado (ativo ou não), campo do tipo <em> BooleanField </em>.
 
 <p align="justify"> 
-Para a parte de imagens foi utilizado a função <em> stdimage </em>, sendo seus nomes rescritos utilizando a biblioteca <em> uuid </em> no intuito de evitar conflito entre os nomes na hora de fazer o upload e, consequentemente, a perca de informação (o django possui por padrão a função de reescrita, entretanto ela mantêm parte do nome original, sendo assim preferi usar uma biblioteca hexadecimal para existir apenas caracteres sem a formação de palavras).
+O upload de imagens é gerenciado pela biblioteca <em>stdimage</em>. Para evitar conflitos e sobreescrita de arquivos, os nomes das imagens são padronizados utilizando a biblioteca <em>uuid</em>, que gera identificadores hexadecimais únicos.
 </p>
 
-## Tradução
+## Internacionalização (i18n)
 
 <p align="justify"> 
-Para que o site possua a função de tradução foi lançado mão de duas ferramentas, uma para a parte Html (<em>gettext</em>) disponível pelo próprio django e outra para os textos no banco de dados (<em>django-modeltranslation</em>) que é necessário efetuar a instalação por fora. Para a parte Html é gerado um arquivo de lista onde você escreve a tradução para cada palavra, algumas ferramentas como o poedit podem ser utilizadas para simplificar o trabalho. Já para os textos do banco de dados, foi preciso escrever para quais linguas a tradução seria feita e após configurado é possível digitar as traduções no momento que se cadastra algo no banco de dados. Com as traduções configuradas, o texto apresentado na página será referente ao idioma utilizado pelo navegador.
+O site foi desenvolvido para suportar múltiplos idiomas através de duas ferramentas principais: <em>gettext</em>, a solução nativa do Django para tradução de strings no template, e <em>django-modeltranslation</em> para a tradução de conteúdo armazenado no banco de dados. A configuração permite que o idioma exibido seja definido automaticamente com base nas preferências do navegador do usuário.
 </p>
 
 ## Testes
 
 <p align="justify"> 
-Este projeto está com todos os testes escritos e funcionando, para criar os testes e ver quais estavam faltando foi utilizada a biblioteca <em> coverage </em> e é possível ver o PDF de resumo clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/master/tests.pdf"> AQUI </a> ou executando os comandos abaixo via terminal através do projeto no <em> python </em>, ou via <em> Docker </em>.
+A qualidade do código é garantida por uma suíte de testes completa. A biblioteca <em>coverage</em> foi utilizada para medir a cobertura de testes e identificar áreas não testadas. Você pode visualizar o relatório de cobertura clicando <a href="https://github.com/ErickFernan/curriculo_online_django/blob/master/tests.pdf"> AQUI </a> ou executando os seguintes comandos no terminal:
 </p>
 
-1. <em>coverage run manage.py test</em> -> para rodar os testes.
-2. <em> coverage report</em> -> para ver um resumo no próprio terminal.
-3. <em>coverage html</em> -> para criar uma pagina html contendo detalhes sobre os testes.
+1. <em>coverage run manage.py test</em> -> Executa a suíte de testes.
+2. <em> coverage report</em> -> Exibe um resumo da cobertura no terminal.
+3. <em>coverage html</em> ->  Gera um relatório HTML detalhado.
 
 ## Demonstração
 
@@ -76,7 +69,6 @@ Caso queira ver mais sobre o projeto você pode:
 1. [Assistir a esse vídeo](https://youtu.be/xNfOM4lk_LE) onde mostro mais detalhes sobre o projeto assim com sua parte administrativa.
 2. Fazer o <em> download </em> deste arquivo .zip e instalar utilizando o docker para já testar em sua própria máquina. Acesse esse [LINK](https://gist.github.com/ErickFernan/e8d9e72500b7f75b77db9e9fb931e5fa) para conferir o passo a passo de <em> download </em> e execução no <em> docker </em>. 
     * Obs1.: Você pode também assitir esse [Vídeo](https://youtu.be/HGx5Y0h-Lkg) para ver o passo a passo.
-    * Obs2.: Por não estar publicado vou deixar uma opção do site estático [AQUI](https://drive.google.com/file/d/1UmbFT4PhlcD1S8TR7ZHQU_LHqr3YmQB3/view?usp=share_link), assim além de testar é possível vê-lo preenchido.
 3. Baixar pelo <em> Github </em> e se divertir modificando-o. Obs.: lembre-se de instalar os requisitos que se encontram no arquivo 
 <em> requirements.txt </em>.
 
@@ -90,19 +82,22 @@ Para sugestões ou dúvidas entre em contado por:
 
 ## 🚀 Status do Projeto
 
-Este é um projeto antigo que está passando por um processo de modernização para melhorar sua estrutura, segurança e funcionalidades.
+Este projeto está em constante evolução, com foco em modernizar sua arquitetura, segurança e funcionalidades.
 
 ### Melhorias Recentes
 - [x] **Variáveis de Ambiente**: A configuração do projeto foi migrada para um arquivo `.env`, separando as credenciais do código-fonte.
 - [x] **Docker Compose**: O arquivo `docker-compose.yml` foi corretamente integrado ao versionamento do projeto.
 - [x] **Ocultar URL do Admin**: Alterar o caminho do painel administrativo para uma URL não previsível, visando reduzir a exposição a ataques automatizados.
+- [x] **Storage de Arquivos**: Implementar o MinIO como serviço de storage self-hosted (compatível com API S3) para o upload e armazenamento de imagens e documentos.
 
-### Próximos Passos (Melhorias)
-- [ ] **Storage de Arquivos**: Implementar o MinIO como serviço de storage self-hosted (compatível com API S3) para o upload e armazenamento de imagens e documentos.
+### Próximos Passos (Roadmap)
+- [ ] **Gerenciamento de Mídia**: Implementar a lógica para excluir/atualizar os arquivos no MinIO quando um objeto for modificado ou removido no painel administrativo do Django.
 - [ ] **Revisão de UI/UX**: Analisar e refatorar os campos da aplicação e o design geral para melhorar a experiência do usuário.
+- [ ] **Revisão de UI/UX**: Definir um peso de prioridade para os dados que compõem "Educação" e "Experiência" para melhor ordenação.
 - [ ] **Serviço de E-mail**: Configurar um container de e-mail local para desenvolvimento (ex: MailHog ou Mailtrap) como solução temporária antes de integrar um serviço de produção.
 - [ ] **Gerenciamento de Conteúdo**: Refatorar o template `videomodalstart.html` para permitir que o vídeo seja gerenciado pelo painel administrativo, em vez de estar fixo no código HTML.
-- [ ] **Revisão de UI/UX**: Definir um peso de prioridade para os dados que compoem Educação e Experiência.
+- [ ] **Atualizar Vídeo de Apresentação**: Gravar um novo vídeo demonstrativo que reflita a arquitetura e as funcionalidades atuais do projeto.
+- [ ] **Cobertura de Testes**: Revisar e complementar a suíte de testes para garantir que as novas funcionalidades estejam cobertas.
 
 #### Segurança
 - [ ] **Autenticação de Dois Fatores (2FA)**: Implementar o pacote `django-otp` para adicionar uma camada extra de segurança no login dos administradores.
