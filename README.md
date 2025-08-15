@@ -16,11 +16,10 @@ O projeto foi desenvolvido com <em>Django</em> e utiliza o banco de dados <em>Po
 </p>
 
 <p align="center">
- <img src="https://github.com/ErickFernan/curriculo_online_django/blob/master/arquitetura.svg"/>
+ <img src="https://github.com/ErickFernan/curriculo_online_django/blob/master/readme imagens/arquitetura.svg"/>
 </p>
 
 
-[CLIQUE AQUI PARA CONFERIR O SITE](https://erickfernan.dev.br)
 
 ## Front-end
 
