@@ -92,7 +92,7 @@ Este projeto está em constante evolução, com foco em modernizar sua arquitetu
 
 ### Próximos Passos (Roadmap)
 - [ ] **Gerenciamento de Mídia**: Implementar a lógica para excluir/atualizar os arquivos no MinIO quando um objeto for modificado ou removido no painel administrativo do Django.
-- [ ] **Revisão de UI/UX**: Analisar e refatorar os campos da aplicação e o design geral para melhorar a experiência do usuário.
+- [ ] **Revisão de UI/UX**: Tornar links clicavéis na decrição de educação.
 - [ ] **Revisão de UI/UX**: Definir um peso de prioridade para os dados que compõem "Educação" e "Experiência" para melhor ordenação.
 - [ ] **Serviço de E-mail**: Configurar um container de e-mail local para desenvolvimento (ex: MailHog ou Mailtrap) como solução temporária antes de integrar um serviço de produção.
 - [ ] **Gerenciamento de Conteúdo**: Refatorar o template `videomodalstart.html` para permitir que o vídeo seja gerenciado pelo painel administrativo, em vez de estar fixo no código HTML.
