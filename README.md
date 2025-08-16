@@ -19,6 +19,7 @@ O projeto foi desenvolvido com <em>Django</em> e utiliza o banco de dados <em>Po
  <img src="https://github.com/ErickFernan/curriculo_online_django/blob/master/readme imagens/arquitetura.svg"/>
 </p>
 
+<p align="center"> Visite o site em: https://erickfernan.dev.br/ </p>
 
 
 ## Front-end
