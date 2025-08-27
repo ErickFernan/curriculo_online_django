@@ -16,6 +16,8 @@ from dj_database_url import parse as psql_url
 
 from decouple import config
 
+from django.contrib.messages import constants as messages
+
 import django.core.mail.backends.base
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -192,17 +194,17 @@ AWS_S3_URL_PROTOCOL = 'http:'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email teste console
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-"""
 # EMAIL PRODUÇÃO
-EMAIL_HOST = 'localhost'
-EMAIL_HOST_USER = 'no-reply@curriculo.com.br'
-EMAIL_PORT = 587
-EMAIL_USE_TSL = True
-EMAIL_HOST_PASSWORD = 'senha123'
-DEFAULT_FROM_EMAIL = 'contato@curriculo.com.br'
-"""
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = True
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+
 
 LOGOUT_REDIRECT_URL = 'index'
 
@@ -255,3 +257,12 @@ CSRF_COOKIE_SECURE = not DEBUG
 SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_COOKIE_HTTPONLY = True # Impede acesso ao cookie CSRF via JavaScript
 X_FRAME_OPTIONS = 'DENY'
+
+# Trocando o error para danger, para padronizar a cor no bootstrap
+MESSAGE_TAGS = {
+    messages.DEBUG: 'debug',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',  
+}

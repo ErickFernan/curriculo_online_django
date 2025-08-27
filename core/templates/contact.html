@@ -2,46 +2,73 @@
 {% load i18n %}
 
 <div class="container-fluid py-5" id="contact">
-        <div class="container">
-            <div class="position-relative d-flex align-items-center justify-content-center">
-                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{% trans 'Contato' %}</h1>
-                <h1 class="position-absolute text-uppercase text-primary">{% trans 'Contate-me' %}</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-form text-center">
-                        <div id="success"></div>
-                        <form name="sentMessage" id="contato" method="post" action="{% url 'index' %}" novalidate="novalidate">
-                            {% csrf_token %}
-                            <div class="form-row">
-                                <div class="control-group col-sm-6">
-                                    <input type="text" class="form-control p-4" id="nome" name="nome" placeholder="{% trans 'Nome' %}"
-                                        required="required" data-validation-required-message="Please enter your name" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="control-group col-sm-6">
-                                    <input type="email" class="form-control p-4" id="email" name="email" placeholder="{% trans 'E-mail' %}"
-                                        required="required" data-validation-required-message="Please enter your email" />
-                                    <p class="help-block text-danger"></p>
-                                </div>
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">{% trans 'Contato' %}</h1>
+            <h1 class="position-absolute text-uppercase text-primary">{% trans 'Contate-me' %}</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-form text-center">
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show mb-4" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="control-group">
-                                <input type="text" class="form-control p-4" id="assunto" name="assunto" placeholder="{% trans 'Assunto' %}"
-                                    required="required" data-validation-required-message="Please enter a subject" />
-                                <p class="help-block text-danger"></p>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contato" method="post" action="{% url 'index' %}#contact" novalidate="novalidate">
+                        {% csrf_token %}
+
+                        {% for error in form.non_field_errors %}
+                            <p class="help-block text-danger">{{ error }}</p>
+                        {% endfor %}
+
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <input type="text" class="form-control p-4" id="nome" name="nome" placeholder="{% trans 'Nome' %}" 
+                                       value="{{ form.nome.value|default_if_none:'' }}" 
+                                       required="required" data-validation-required-message="Por favor, digite seu nome." />
+                                <p class="help-block text-danger">
+                                    {% for error in form.nome.errors %}{{ error }}{% endfor %}
+                                </p>
                             </div>
-                            <div class="control-group">
-                                <textarea class="form-control py-3 px-4" rows="5" id="mesagem" name="mensagem" placeholder="{% trans 'Mensagem' %}"
-                                    required="required"
-                                    data-validation-required-message="Por favor, digite sua mensagem"></textarea>
-                                <p class="help-block text-danger"></p>
+                            <div class="control-group col-sm-6">
+                                <input type="email" class="form-control p-4" id="email" name="email" placeholder="{% trans 'E-mail' %}" 
+                                       value="{{ form.email.value|default_if_none:'' }}" 
+                                       required="required" data-validation-required-message="Por favor, digite seu e-mail." />
+                                <p class="help-block text-danger">
+                                    {% for error in form.email.errors %}{{ error }}{% endfor %}
+                                </p>
                             </div>
-                            <div>
-                                <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">{% trans 'Enviar Mensagem' %}</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="assunto" name="assunto" placeholder="{% trans 'Assunto' %}" 
+                                   value="{{ form.assunto.value|default_if_none:'' }}" 
+                                   required="required" data-validation-required-message="Por favor, digite o assunto." />
+                            <p class="help-block text-danger">
+                                {% for error in form.assunto.errors %}{{ error }}{% endfor %}
+                            </p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control py-3 px-4" rows="5" id="mensagem" name="mensagem" placeholder="{% trans 'Mensagem' %}" 
+                                      required="required" data-validation-required-message="Por favor, digite sua mensagem.">{{ form.mensagem.value|default_if_none:'' }}</textarea>
+                            <p class="help-block text-danger">
+                                {% for error in form.mensagem.errors %}{{ error }}{% endfor %}
+                            </p>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary" type="submit" id="sendMessageButton">{% trans 'Enviar Mensagem' %}</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
