@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
 
     'modeltranslation',
+    'admin_honeypot',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -83,6 +84,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'curriculo.wsgi.application'
 
+ADMINS = [
+    (config('ADMIN_NAME'), config('ADMIN_EMAIL')),
+]
+
+ADMIN_HONEYPOT_EMAIL_ADMINS = True
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -204,6 +210,7 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
+SERVER_EMAIL = config('SERVER_EMAIL')
 
 
 LOGOUT_REDIRECT_URL = 'index'

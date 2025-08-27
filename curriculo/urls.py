@@ -21,6 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path(settings.ADMIN_PATH, admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('', include('core.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

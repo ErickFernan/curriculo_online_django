@@ -5,6 +5,8 @@ coverage==6.5.0
 dj-database-url==3.0.1
 dj-static==0.0.6
 Django==5.2.5
+django-admin-honeypot-updated-2021==1.2.0
+django-ipware==7.0.1
 django-modeltranslation==0.18.5
 django-stdimage==6.0.1
 django-storages==1.14.6
@@ -15,6 +17,7 @@ Pillow==9.2.0
 psycopg2-binary==2.9.3
 python-dateutil==2.9.0.post0
 python-decouple==3.8
+python-ipware==3.0.0
 s3transfer==0.13.1
 six==1.17.0
 sqlparse==0.4.2
