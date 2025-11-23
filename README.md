@@ -89,12 +89,12 @@ Este projeto está em constante evolução, com foco em modernizar sua arquitetu
 - [x] **Docker Compose**: O arquivo `docker-compose.yml` foi corretamente integrado ao versionamento do projeto.
 - [x] **Ocultar URL do Admin**: Alterar o caminho do painel administrativo para uma URL não previsível, visando reduzir a exposição a ataques automatizados.
 - [x] **Storage de Arquivos**: Implementar o MinIO como serviço de storage self-hosted (compatível com API S3) para o upload e armazenamento de imagens e documentos.
+- [x] **Serviço de E-mail**: Integração com a API do **Brevo** para envio e recebimento de e-mails em produção, substituindo soluções de teste locais.
 
 ### Próximos Passos (Roadmap)
 - [ ] **Gerenciamento de Mídia**: Implementar a lógica para excluir/atualizar os arquivos no MinIO quando um objeto for modificado ou removido no painel administrativo do Django.
 - [ ] **Revisão de UI/UX**: Tornar links clicavéis na decrição de educação.
 - [ ] **Revisão de UI/UX**: Definir um peso de prioridade para os dados que compõem "Educação" e "Experiência" para melhor ordenação.
-- [ ] **Serviço de E-mail**: Configurar um container de e-mail local para desenvolvimento (ex: MailHog ou Mailtrap) como solução temporária antes de integrar um serviço de produção (Brevo).
 - [ ] **Gerenciamento de Conteúdo**: Refatorar o template `videomodalstart.html` para permitir que o vídeo seja gerenciado pelo painel administrativo, em vez de estar fixo no código HTML.
 - [ ] **Atualizar Vídeo de Apresentação**: Gravar um novo vídeo demonstrativo que reflita a arquitetura e as funcionalidades atuais do projeto.
 - [ ] **Cobertura de Testes**: Revisar e complementar a suíte de testes para garantir que as novas funcionalidades estejam cobertas.
